@@ -1,0 +1,222 @@
+[
+  {
+    "id": "e316b226-d8f5-4eb4-97bb-9d1dd8e4f39c",
+    "title": "Remera basica blanca",
+    "description": "Remera de algodon con cuello redondo",
+    "code": "REM-001",
+    "price": 4500,
+    "status": true,
+    "stock": 120,
+    "category": "Remeras",
+    "thumbnails": []
+  },
+  {
+    "id": "5dc86fe7-679c-448e-a536-7e60c2747130",
+    "title": "Remera estampada urbana",
+    "description": "Remera de algodon con estampado grafico",
+    "code": "REM-002",
+    "price": 5200,
+    "status": true,
+    "stock": 8,
+    "category": "Remeras",
+    "thumbnails": []
+  },
+  {
+    "id": "df733bb5-e614-4329-8b95-d3bfdcd8dbf6",
+    "title": "Buzo canguro gris",
+    "description": "Buzo de algodon con capucha y bolsillo frontal",
+    "code": "BUZ-001",
+    "price": 85000,
+    "status": true,
+    "stock": 80,
+    "category": "Buzos",
+    "thumbnails": []
+  },
+  {
+    "id": "d6e94546-b0ac-4bf3-800f-71ce362de20d",
+    "title": "Buzo basico negro",
+    "description": "Buzo liso de algodon, cuello redondo",
+    "code": "BUZ-002",
+    "price": 50000,
+    "status": true,
+    "stock": 100,
+    "category": "Buzos",
+    "thumbnails": []
+  },
+  {
+    "id": "84927436-989d-4b3e-b6a4-70e322c321a5",
+    "title": "Campera de jean",
+    "description": "Campera de jean azul clasico",
+    "code": "CAM-001",
+    "price": 90000,
+    "status": true,
+    "stock": 30,
+    "category": "Camperas",
+    "thumbnails": []
+  },
+  {
+    "id": "4ebf7d74-3c20-48e8-ad9b-c0f91f16f265",
+    "title": "Campera bomber verde",
+    "description": "Campera bomber con cierre metalico",
+    "code": "CAM-002",
+    "price": 100000,
+    "status": true,
+    "stock": 45,
+    "category": "Camperas",
+    "thumbnails": []
+  },
+  {
+    "id": "12835be1-521d-4835-b9d5-7e4f6eba9616",
+    "title": "Jeans azul clasico",
+    "description": "Pantalon de jean corte recto",
+    "code": "PAN-001",
+    "price": 42000,
+    "status": true,
+    "stock": 70,
+    "category": "Pantalones",
+    "thumbnails": []
+  },
+  {
+    "id": "65d59cdd-ed86-400a-94b5-d7ca99a6ae48",
+    "title": "Pantalon cargo verde",
+    "description": "Pantalon cargo con multiples bolsillos",
+    "code": "PAN-002",
+    "price": 35000,
+    "status": true,
+    "stock": 40,
+    "category": "Pantalones",
+    "thumbnails": []
+  },
+  {
+    "id": "57dc062c-b264-4a7f-af2d-a262c1fa46fb",
+    "title": "Vestido largo floral",
+    "description": "Vestido de verano con estampado floral",
+    "code": "VES-001",
+    "price": 25000,
+    "status": true,
+    "stock": 40,
+    "category": "Vestidos",
+    "thumbnails": []
+  },
+  {
+    "id": "10351b72-2ff3-470d-aa9d-2a8d304aa9ea",
+    "title": "Vestido corto negro",
+    "description": "Vestido elegante color negro",
+    "code": "VES-002",
+    "price": 30000,
+    "status": true,
+    "stock": 30,
+    "category": "Vestidos",
+    "thumbnails": []
+  },
+  {
+    "id": "51ae8500-c798-4e05-bae8-a71e95d03bdd",
+    "title": "Camisa blanca formal",
+    "description": "Camisa manga larga, botones clasicos",
+    "code": "CAM-001",
+    "price": 11000,
+    "status": true,
+    "stock": 50,
+    "category": "Camisas",
+    "thumbnails": []
+  },
+  {
+    "id": "cb2dd006-a2b1-4dc6-a6b4-89d4516011ec",
+    "title": "Camisa a cuadros",
+    "description": "Camisa de algodon, estilo leñador",
+    "code": "CAM-002",
+    "price": 9800,
+    "status": true,
+    "stock": 60,
+    "category": "Camisas",
+    "thumbnails": []
+  },
+  {
+    "id": "cce1f184-65a6-4523-8d16-f88de211d5e9",
+    "title": "Falda de jean",
+    "description": "Falda corta de jean azul",
+    "code": "FAL-001",
+    "price": 26000,
+    "status": true,
+    "stock": 40,
+    "category": "Faldas",
+    "thumbnails": []
+  },
+  {
+    "id": "def14969-9083-4426-950b-f2ebdc27a938",
+    "title": "Falda negra",
+    "description": "Falda larga suelta",
+    "code": "FAL-002",
+    "price": 34000,
+    "status": true,
+    "stock": 25,
+    "category": "Faldas",
+    "thumbnails": []
+  },
+  {
+    "id": "c4fa6c7e-9b6c-4ec7-a521-91f36cce0e42",
+    "title": "Cinturon de cuero",
+    "description": "Cinturon marron con hebilla metalica",
+    "code": "ACC-001",
+    "price": 45000,
+    "status": true,
+    "stock": 80,
+    "category": "Accesorios",
+    "thumbnails": []
+  },
+  {
+    "id": "b42d391b-85fc-4a11-b808-50c85cf740d7",
+    "title": "Gorra deportiva",
+    "description": "Gorra ajustable",
+    "code": "ACC-002",
+    "price": 32000,
+    "status": true,
+    "stock": 100,
+    "category": "Accesorios",
+    "thumbnails": []
+  },
+  {
+    "id": "2419c258-840a-450c-843f-b63fa77189ae",
+    "title": "Zapatillas urbanas blancas",
+    "description": "Zapatillas casuales de tela",
+    "code": "CAL-001",
+    "price": 91500,
+    "status": true,
+    "stock": 60,
+    "category": "Calzado",
+    "thumbnails": []
+  },
+  {
+    "id": "0ddaa102-dee3-4ad3-a513-ba9e1a82ded1",
+    "title": "Botines negros",
+    "description": "Botines de cuero con cierre lateral",
+    "code": "CAL-002",
+    "price": 67000,
+    "status": true,
+    "stock": 25,
+    "category": "Calzado",
+    "thumbnails": []
+  },
+  {
+    "id": "5412f28e-4894-4288-b3e9-e8097fa082f4",
+    "title": "Chaleco acolchado negro",
+    "description": "Chaleco abrigo acolchado color negro",
+    "code": "CHA-001",
+    "price": 11800,
+    "status": true,
+    "stock": 45,
+    "category": "Chalecos",
+    "thumbnails": []
+  },
+  {
+    "id": "f61decf8-2c19-4283-895f-4f6adb317401",
+    "title": "Chaleco de lana gris",
+    "description": "Chaleco tejido de lana para invierno",
+    "code": "CHA-002",
+    "price": 9800,
+    "status": true,
+    "stock": 35,
+    "category": "Chalecos",
+    "thumbnails": []
+  }
+]
