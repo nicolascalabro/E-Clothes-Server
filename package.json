@@ -11,6 +11,8 @@
   "license": "ISC",
   "description": "Server de ecommerce para primer entrega",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.1",
+    "multer": "^2.0.2"
   }
 }

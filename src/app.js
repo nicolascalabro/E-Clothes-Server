@@ -1,15 +1,31 @@
 import express from "express";
+import {engine} from "express-handlebars";
+import viewsRouter from "./routes/views-router.js";
+import productsRouter from "./routes/products-router.js"
+
 import ProductManager from "./ProductManager.js";
 import CartManager from "./CartManager.js";
 
 const app = express();
+
 const productManager = new ProductManager("./src/products.json");
 const cartManager = new CartManager("./src/carts.json");
 
 app.use(express.json());
+app.use(express.static("public"));              //define a public como la raiz de los estaticos
+app.use(express.urlencoded({entended: true}));  //permite obtener los elementos de un formulario como un objeto
 
+// ------------- Handlebars Configuration -------------
+app.engine("handlebars", engine());             //habilita el motor handlebars
+app.set("view engine", "handlebars");           //setea handlebars como motor de vistas, porque podemos tener varios
+app.set("views", "./src/views");                //setea la ruta de las vistas
+
+// ------------- Endpoints Handlers -------------
+app.use("/", viewsRouter);
+app.use("/api/products", productsRouter);
+
+/*
 // ------------- Products Endpoint -------------
-
 app.get("/api/products", async (req, res) =>{
     try {
         const products = await productManager.getProducts();
@@ -67,7 +83,6 @@ app.delete("/api/products/:prodid", async (req, res) => {
 });
 
 // ------------- Carts Endpoint -------------
-
 app.get("/api/carts", async (req, res) =>{
     try {
         const carts = await cartManager.getCarts();
@@ -110,9 +125,9 @@ app.post("/api/carts/:cartid/product/:prodid", async (req, res) =>{
         res.status(500).json({message: error.message});
     }
 });
+*/
 
 // ------------- Server Startup -------------
-
 app.listen(8080, () => {
     console.log("Server started at port 8080");
 });
