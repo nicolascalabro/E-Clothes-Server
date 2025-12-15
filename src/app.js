@@ -1,133 +1,61 @@
 import express from "express";
+import http from "http";
 import {engine} from "express-handlebars";
+import {Server} from "socket.io";
+
+import apiRouter from "./routes/api-router.js";
 import viewsRouter from "./routes/views-router.js";
-import productsRouter from "./routes/products-router.js"
+import ProductManager from "./utils/ProductManager.js";
 
-import ProductManager from "./ProductManager.js";
-import CartManager from "./CartManager.js";
+// ------------- Server and Socket Creation -------------
+const app = express();              
+const server = http.createServer(app);          //Crea el server por fuera de express porque quiero implementar websocket
+const io = new Server(server);                  //Crea el websocket
 
-const app = express();
-
-const productManager = new ProductManager("./src/products.json");
-const cartManager = new CartManager("./src/carts.json");
-
+// ------------- Express Configuration -------------
 app.use(express.json());
 app.use(express.static("public"));              //define a public como la raiz de los estaticos
 app.use(express.urlencoded({entended: true}));  //permite obtener los elementos de un formulario como un objeto
 
 // ------------- Handlebars Configuration -------------
-app.engine("handlebars", engine());             //habilita el motor handlebars
-app.set("view engine", "handlebars");           //setea handlebars como motor de vistas, porque podemos tener varios
-app.set("views", "./src/views");                //setea la ruta de las vistas
+app.engine("handlebars", engine());             //Habilita el motor handlebars
+app.set("view engine", "handlebars");           //Setea handlebars como motor de vistas, porque podemos tener varios
+app.set("views", "./src/views");                //Setea la ruta de las vistas
 
 // ------------- Endpoints Handlers -------------
+app.use("/api", apiRouter);
 app.use("/", viewsRouter);
-app.use("/api/products", productsRouter);
 
-/*
-// ------------- Products Endpoint -------------
-app.get("/api/products", async (req, res) =>{
+// ------------- Server-side websocket -------------
+const productManager = new ProductManager("./src/utils/products.json");
+
+//El metodo on escucha eventos. Connection es el evento de conexion de un cliente
+io.on("connection", async (socket)=>{                 
+    console.log("Nuevo cliente conectado");
     try {
         const products = await productManager.getProducts();
-        res.status(200).json({message: "Products has been retrieved", products: products});
-
+        socket.emit("all products", products);   //se emiten todos los productos al cliente especifico
     } catch (error) {
-        res.status(500).json({message: error.message});
-    }    
-});
-
-app.get("/api/products/:prodid", async (req, res) =>{
-    try {
-        const prodId = req.params.prodid;
-        const targetProduct = await productManager.getProductById(prodId);
-        res.status(200).json({message: "Product has been retrieved", product: targetProduct});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }    
-});
-
-app.post("/api/products", async (req, res) =>{
-    try {
-        const product = req.body;
-        const products = await productManager.addProduct(product);
-        res.status(200).json({message: "Product has been added", products: products});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
+        console.log(error.message);
     }
-});
 
-app.put("/api/products/:prodid", async (req, res) => {
+    //Server recibe el id del producto que quiere borrar el cliente y emite el broadcast a todos los clientes.
+    socket.on("delete product", async (prodId) => {
     try {
-        const prodId = req.params.prodid;
-        const updates = req.body;
-
-        const products = await productManager.updateProductById(prodId, updates);
-        res.status(200).json({message: "Product has been updated", products: products});
-
+        const products = await productManager.deleteProductById(prodId); //se borra el producto y se obtienen todos los productos restantes
+        io.emit("all products", products);     //se emiten todos los productos restantes a todos los clientes
     } catch (error) {
-        res.status(500).json({message: error.message});
+        console.log(error.message);
     }
+    });
+
+    //Server recibe el producto que quiere agregar el cliente y emite el broadcast a todos los clientes.
+    socket.on("add product", (data) => {     
+        io.emit("broadcast new product", data);  //se emite el nuevo producto a todos los clientes  
+     });     
 });
-
-app.delete("/api/products/:prodid", async (req, res) => {
-    try {
-        const prodId = req.params.prodid;
-        const products = await productManager.deleteProductById(prodId);
-        res.status(200).json({message: "Product has been deleted", products: products});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-});
-
-// ------------- Carts Endpoint -------------
-app.get("/api/carts", async (req, res) =>{
-    try {
-        const carts = await cartManager.getCarts();
-        res.status(200).json({message: "Carts has been retrieved", carts: carts});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }    
-});
-
-app.get("/api/carts/:cartid", async (req, res) =>{
-    try {
-        const cartId = req.params.cartid;
-        const targetCart = await cartManager.getCartById(cartId);
-        res.status(200).json({message: "Cart has been retrieved", cart: targetCart});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }    
-});
-
-app.post("/api/carts", async (req, res) =>{
-    try {
-        const carts = await cartManager.createCart();
-        res.status(200).json({message: "Cart has been created", carts: carts});
-
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-});
-
-app.post("/api/carts/:cartid/product/:prodid", async (req, res) =>{
-    try {
-        const cartId = req.params.cartid;
-        const prodId = req.params.prodid;
-        const carts = await cartManager.addProductToCart(cartId, prodId);
-        res.status(200).json({message: "Product has been added to the cart", carts: carts});
-        
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-});
-*/
 
 // ------------- Server Startup -------------
-app.listen(8080, () => {
+server.listen(8080, ()=>{
     console.log("Server started at port 8080");
 });
