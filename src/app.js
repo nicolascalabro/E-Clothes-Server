@@ -6,6 +6,7 @@ import {Server} from "socket.io";
 import apiRouter from "./routes/api-router.js";
 import viewsRouter from "./routes/views-router.js";
 import ProductManager from "./utils/ProductManager.js";
+//import uploader from "./utils/uploader.js";
 
 // ------------- Server and Socket Creation -------------
 const app = express();              
@@ -50,8 +51,13 @@ io.on("connection", async (socket)=>{
     });
 
     //Server recibe el producto que quiere agregar el cliente y emite el broadcast a todos los clientes.
-    socket.on("add product", (data) => {     
-        io.emit("broadcast new product", data);  //se emite el nuevo producto a todos los clientes  
+    socket.on("add product", async (product) => {  
+        try {
+            await productManager.addProduct(product); 
+            io.emit("new product", product);    //se emite el nuevo producto a todos los clientes
+        } catch (error) {
+            console.log(error.message);
+        }   
      });     
 });
 

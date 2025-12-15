@@ -1,6 +1,6 @@
 import express from "express";
 import ProductManager from "../utils/ProductManager.js";
-import uploader from "../utils/uploader.js";
+//import uploader from "../utils/uploader.js";
 
 const viewsRouter = express.Router();
 const productManager = new ProductManager("./src/utils/products.json");
@@ -19,7 +19,7 @@ viewsRouter.get("/", async (req, res) =>{
 });
 
 // ------------- Realtime Products Endpoints -------------
-viewsRouter.get("/realtimeproducts", (req, res) =>{
+viewsRouter.get("/realtimeproducts", async (req, res) =>{
   try {
     res.render("realtimeproducts");
   } catch (error) {
@@ -28,6 +28,7 @@ viewsRouter.get("/realtimeproducts", (req, res) =>{
   }
 })
 
+/*
 viewsRouter.post("/realtimeproducts", uploader.single("thumbnailFile"), async (req, res) =>{
   try {
     const title = req.body.title;
@@ -47,5 +48,6 @@ viewsRouter.post("/realtimeproducts", uploader.single("thumbnailFile"), async (r
     console.log(error.message);
   }
 });
+*/
 
 export default viewsRouter;
