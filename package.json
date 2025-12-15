@@ -9,11 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Server de ecommerce para primer entrega",
+  "description": "Server E-Clothes",
   "dependencies": {
     "express": "^5.2.1",
     "express-handlebars": "^8.0.1",
-    "multer": "^2.0.2",
     "nodemon": "^3.1.11",
     "socket.io": "^4.8.1"
   }

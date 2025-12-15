@@ -6,7 +6,6 @@ import {Server} from "socket.io";
 import apiRouter from "./routes/api-router.js";
 import viewsRouter from "./routes/views-router.js";
 import ProductManager from "./utils/ProductManager.js";
-//import uploader from "./utils/uploader.js";
 
 // ------------- Server and Socket Creation -------------
 const app = express();              
