@@ -1,22 +1,11 @@
 <div class="dashboard">
   <h1 class="dashboard-title">Home</h1>
-
-  {{#with user}}
-    <div class="user-info">
-      <h2 class="username">{{username}}</h2>
-      {{#if isAdmin}}
-        <h3 class="admin-message admin-true">Permisos de administrador</h3>
-      {{else}}
-        <h3 class="admin-message admin-false">No tienes permisos de administrador</h3>
-      {{/if}}
-    </div>
-  {{/with}}
-
+  
   <div class="product-grid">
     {{#each products}}
       <div class="product-card">
-        <h2 class="product-title">{{this.title}}</h2>
-        <h3 class="product-price">Precio: {{this.price}}</h3>
+        <h2 class="product-title">Title: {{this.title}}</h2>
+        <h3 class="product-price">Price: ${{this.price}}</h3>
       </div>
     {{/each}}
   </div>

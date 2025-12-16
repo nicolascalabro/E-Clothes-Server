@@ -12,15 +12,15 @@ function createProductCard(prod) {
 
     const title = document.createElement("h2");
     title.classList.add("product-title");
-    title.textContent = prod.title;
+    title.textContent = `Title: ${prod.title}`;
 
     const price = document.createElement("h3");
     price.classList.add("product-price");
-    price.textContent = prod.price; 
+    price.textContent = `Price: $${prod.price}`; 
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("form-button");
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = "Delete Product";
     deleteButton.value = prod.id;
 
     deleteButton.addEventListener("click", (event) => {
@@ -43,7 +43,7 @@ socket.on("all products", (data) => {
     });
 });
 
-//Cliente envia el formulario al server al hacer post
+//Cliente envia el formulario al server al hacer el post
 formProduct.addEventListener("submit", (event) => {
     event.preventDefault();
 

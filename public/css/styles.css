@@ -18,7 +18,6 @@ body{
 .user-info {
   background-color: #08141a;
   padding: 2rem;
-  /*margin-bottom: 2rem;*/
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
@@ -71,13 +70,13 @@ body{
 }
 
 .product-title {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .product-price {
-  color: #666;
-  font-size: 1rem;
+  color: #959292;
+  font-size: 1.3rem;
 }
 
 /* Formulario */
@@ -86,6 +85,7 @@ body{
   justify-content: flex-start;
   padding: 2rem 0;
 }
+
 
 .product-form {
   background-color: #08141a;
@@ -101,7 +101,7 @@ body{
 .form-input {
   margin: 20px 0;
   padding: 0.8rem 1rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border: 1px solid #157b92;
   background-color: rgb(210, 210, 210);
   border-radius: 8px;
@@ -117,7 +117,7 @@ body{
   padding: 0.8rem 1rem;
   background-color: #007bff;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -126,4 +126,57 @@ body{
 
 .form-button:hover {
   background-color: #0056b3;
+}
+
+/* Header */
+.main-header {
+  background-color: #08141a;
+  border-bottom: 1px solid #02526b;
+  padding: 1rem 0;
+}
+
+.header-container {
+  max-width: auto;
+  margin: auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: Arial, sans-serif;
+  color: rgb(233, 233, 233);
+}
+
+.logotype {
+  height: 8rem;
+  width: 8rem;
+  object-fit: cover;
+  padding-right: 7.5rem;
+}
+
+.nav-list {
+  list-style: none;
+  font-size: 1.8rem;
+  font-family: Arial, sans-serif;
+  color: rgb(233, 233, 233);
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: Arial, sans-serif;
+  color: rgb(233, 233, 233);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.7s;
+}
+
+.nav-link:hover {
+  color: #00a3cc;
+  border-bottom-color: #00a3cc;
 }

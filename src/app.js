@@ -52,6 +52,10 @@ io.on("connection", async (socket)=>{
     //Server recibe el producto que quiere agregar el cliente y emite el broadcast a todos los clientes.
     socket.on("add product", async (product) => {  
         try {
+            product.price = parseInt(product.price);
+            product.status = product.status === 'True';
+            product.stock = parseInt(product.stock);
+            
             await productManager.addProduct(product); 
             io.emit("new product", product);    //se emite el nuevo producto a todos los clientes
         } catch (error) {

@@ -7,10 +7,9 @@ const productManager = new ProductManager("./src/utils/products.json");
 // ------------- Views Endpoint -------------
 viewsRouter.get("/", async (req, res) =>{
   try {
-    const user = {username: "NicoDev", isAdmin: true};
     const products = await productManager.getProducts();
 
-    res.render("home", {products, user});
+    res.render("home", {products});
   } catch (error) {
     res.render("error");
     console.log(error.message);
