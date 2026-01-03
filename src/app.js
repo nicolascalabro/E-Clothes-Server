@@ -2,25 +2,39 @@ import express from "express";
 import http from "http";
 import {engine} from "express-handlebars";
 import {Server} from "socket.io";
+import dotenv from "dotenv";
 
 import apiRouter from "./routes/api-router.js";
 import viewsRouter from "./routes/views-router.js";
 import ProductManager from "./utils/ProductManager.js";
+import connectMongoDB from "./config/db.js";
+import { errorHandler } from "./middlewares/error-middleware.js";
+//import __dirname from "../dirname.js";
+
+
+// ------------- Dotenv Initialization -------------
+dotenv.config();
+//dotenv.config({path: __dirname + "/.env"});
 
 // ------------- Server and Socket Creation -------------
 const app = express();              
-const server = http.createServer(app);          //Crea el server por fuera de express porque quiero implementar websocket
+const server = http.createServer(app);          //Crea el server por fuera de express para implementar websocket
 const io = new Server(server);                  //Crea el websocket
 
 // ------------- Express Configuration -------------
 app.use(express.json());
-app.use(express.static("public"));              //define a public como la raiz de los estaticos
-app.use(express.urlencoded({entended: true}));  //permite obtener los elementos de un formulario como un objeto
+app.use(express.static("public"));              //Define a public como la raiz de los estaticos
+//app.use(express.static(__dirname + "/public")); //Define a public como la raiz de los estaticos
+app.use(express.urlencoded({entended: true}));  //Permite obtener los elementos de un formulario como un objeto
 
 // ------------- Handlebars Configuration -------------
 app.engine("handlebars", engine());             //Habilita el motor handlebars
 app.set("view engine", "handlebars");           //Setea handlebars como motor de vistas, porque podemos tener varios
 app.set("views", "./src/views");                //Setea la ruta de las vistas
+//app.set("views", __dirname + "./src/views");  //Setea la ruta de las vistas
+
+// ------------- MongoDB Connection -------------
+connectMongoDB();
 
 // ------------- Endpoints Handlers -------------
 app.use("/api", apiRouter);
@@ -64,7 +78,10 @@ io.on("connection", async (socket)=>{
      });     
 });
 
+// ------------- Middleware Error Handler ------------
+app.use(errorHandler);
+
 // ------------- Server Startup -------------
-server.listen(8080, ()=>{
+server.listen(process.env.PORT, ()=>{
     console.log("Server started at port 8080");
 });

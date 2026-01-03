@@ -8,15 +8,5 @@
     "status": false,
     "stock": 50,
     "category": "Hoodies"
-  },
-  {
-    "id": "378efe93-0abb-4945-948c-8f1d99138385",
-    "title": "Buzo",
-    "description": "Buzo tipo oversize color claro",
-    "code": "BUZ-123",
-    "price": 60000,
-    "status": true,
-    "stock": 50,
-    "category": "Hoodies"
   }
 ]

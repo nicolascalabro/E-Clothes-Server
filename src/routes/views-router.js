@@ -1,10 +1,12 @@
 import express from "express";
+
 import ProductManager from "../utils/ProductManager.js";
 
 const viewsRouter = express.Router();
 const productManager = new ProductManager("./src/utils/products.json");
 
 // ------------- Views Endpoint -------------
+
 viewsRouter.get("/", async (req, res) =>{
   try {
     const products = await productManager.getProducts();
@@ -15,6 +17,7 @@ viewsRouter.get("/", async (req, res) =>{
     console.log(error.message);
   }
 });
+
 
 // ------------- Realtime Products Endpoints -------------
 viewsRouter.get("/realtimeproducts", async (req, res) =>{
