@@ -10,7 +10,6 @@ import connectMongoDB from "./config/db.js";
 import { errorHandler } from "./middlewares/error-middleware.js";
 import Product from "./models/product-model.js";
 
-
 // ------------- Dotenv Initialization -------------
 dotenv.config();
 
