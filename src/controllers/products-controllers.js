@@ -3,7 +3,7 @@ import { throwHttpError } from "../utils/httpError.js";
 
 export const getAllProducts = async (req, res, next) =>{
     try {
-        const products = await Product.find().lean();   //EL metodo lean limpia metadata que trae find
+        const products = await Product.find().lean();
         res.status(200).json({message: "Products has been retrieved", payload: products});
     } catch (error) {
         next(error);
@@ -13,6 +13,7 @@ export const getAllProducts = async (req, res, next) =>{
 export const getProductById = async (req, res, next) =>{
     try {
         const prodId = req.params.prodid;
+        console.log(prodId);
         const targetProduct = await Product.findById(prodId).lean();
         if(!targetProduct) throwHttpError("Product not found", 404);
         

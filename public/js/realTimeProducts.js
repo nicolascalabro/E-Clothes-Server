@@ -14,6 +14,10 @@ function createProductCard(prod) {
     title.classList.add("product-title");
     title.textContent = `Title: ${prod.title}`;
 
+    const description = document.createElement("h2");
+    description.classList.add("product-title");
+    description.textContent = `Description: ${prod.description}`;
+
     const price = document.createElement("h3");
     price.classList.add("product-price");
     price.textContent = `Price: $${prod.price}`; 
@@ -21,13 +25,14 @@ function createProductCard(prod) {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("form-button");
     deleteButton.textContent = "Delete Product";
-    deleteButton.value = prod.id;
+    deleteButton.value = prod._id;
 
     deleteButton.addEventListener("click", (event) => {
-        socket.emit("delete product", prod.id); 
+        socket.emit("delete product", prod._id); 
     });
 
     card.appendChild(title);
+    card.appendChild(description);
     card.appendChild(price);
     card.appendChild(deleteButton);
 

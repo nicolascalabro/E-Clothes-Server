@@ -1,31 +1,25 @@
 import express from "express";
 
-import ProductManager from "../utils/ProductManager.js";
+import Product from "../models/product-model.js";
 
 const viewsRouter = express.Router();
-const productManager = new ProductManager("./src/utils/products.json");
 
-// ------------- Views Endpoint -------------
-
+// ------------- Home Endpoint -------------
 viewsRouter.get("/", async (req, res) =>{
   try {
-    const products = await productManager.getProducts();
-
+    const products = await Product.find().lean();
     res.render("home", {products});
   } catch (error) {
     res.render("error");
-    console.log(error.message);
   }
 });
 
-
-// ------------- Realtime Products Endpoints -------------
+// ------------- Realtime Products Endpoint -------------
 viewsRouter.get("/realtimeproducts", async (req, res) =>{
   try {
     res.render("realtimeproducts");
   } catch (error) {
     res.render("error");
-    console.log(error.message);
   }
 })
 
