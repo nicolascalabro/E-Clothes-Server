@@ -12,19 +12,19 @@ function createProductCard(prod) {
 
     const title = document.createElement("h2");
     title.classList.add("product-title");
-    title.textContent = `Title: ${prod.title}`;
+    title.textContent = `Titulo: ${prod.title}`;
 
     const description = document.createElement("h2");
     description.classList.add("product-title");
-    description.textContent = `Description: ${prod.description}`;
+    description.textContent = `Descripcion: ${prod.description}`;
 
     const price = document.createElement("h3");
     price.classList.add("product-price");
-    price.textContent = `Price: $${prod.price}`; 
+    price.textContent = `Precio: $${prod.price}`; 
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("form-button");
-    deleteButton.textContent = "Delete Product";
+    deleteButton.textContent = "Eliminar Producto";
     deleteButton.value = prod._id;
 
     deleteButton.addEventListener("click", (event) => {

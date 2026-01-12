@@ -19,9 +19,9 @@ const server = http.createServer(app);          //Crea el server por fuera de ex
 const io = new Server(server);                  //Crea el websocket
 
 // ------------- Express Configuration -------------
-app.use(express.json());
+app.use(express.json());                        //El server puede leer json en las requests
 app.use(express.static("public"));              //Define a public como la raiz de los estaticos
-app.use(express.urlencoded({entended: true}));  //Permite obtener los elementos de un formulario como un objeto
+app.use(express.urlencoded({extended: true}));  //Permite obtener los elementos de un formulario como un objeto
 
 // ------------- Handlebars Configuration -------------
 app.engine("handlebars", engine());             //Habilita el motor handlebars
@@ -38,7 +38,7 @@ app.use("/", viewsRouter);
 // ------------- Server-side websocket -------------
 //El metodo on escucha eventos. Connection es el evento de conexion de un cliente
 io.on("connection", async (socket)=>{                 
-    console.log("Nuevo cliente conectado");
+    console.log("New client connected");
     try {
         const products = await Product.find().lean();
         socket.emit("all products", products);      //Se emiten todos los productos al cliente especifico
