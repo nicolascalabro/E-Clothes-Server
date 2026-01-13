@@ -46,7 +46,6 @@ export const deleteCartById = async (req, res, next) => {
     }
 };
 
-
 export const addProductToCart = async (req, res, next) => {
     try {
         const cartId = req.params.cartid;
@@ -97,6 +96,32 @@ export const addProductToCart = async (req, res, next) => {
 
         res.status(200).json({status: "Success", message: "Product has been updated or added to the cart", payload: updatedCart});
 
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const deleteProductFromCart = async(req, res, next) => {
+    try {
+        const cartId = req.params.cartid;
+        const prodId = req.params.prodid;
+
+        const updatedCart = await Cart.findByIdAndUpdate(
+            cartId,
+            {
+                $pull: {
+                        products: {product: prodId}
+                 }
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!updatedCart) throwHttpError("Cart or product not found", 404);
+        res.status(200).json({status: "Success", message: "Product has been removed from cart", payload: updatedCart});
+        
     } catch (error) {
         next(error);
     }

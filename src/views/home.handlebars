@@ -11,4 +11,11 @@
     {{/each}}
   </div>
 
+  <div class="pagination-container">
+    <p>Paginas</p>
+    {{#each links}}
+      <a href={{this.linkToPage}} class="form-button pagination-link">{{this.pageNumber}}</a>
+    {{/each}}
+  </div>
+
 </div>

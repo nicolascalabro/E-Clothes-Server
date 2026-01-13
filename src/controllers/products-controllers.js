@@ -15,7 +15,7 @@ export const getAllProducts = async (req, res, next) =>{
 //uso el plugin de paginacion para este endpoint
 export const getAllProducts = async (req, res, next) =>{
     try {
-        const limit = req.query.limit || 10;  //query son valores opcionales que vienen en la url de la request, mediante el signo ?
+        const limit = req.query.limit || 4;  //query son valores opcionales que vienen en la url de la request, mediante el signo ?
         const page = req.query.page || 1;
         const productsData = await Product.paginate({}, {limit: limit, page: page, lean: true});   
         const products = productsData.docs;

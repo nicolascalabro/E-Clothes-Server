@@ -1,7 +1,7 @@
 import express from "express";
 
 import {getAllProducts, getProductById, addProduct, updateProductById, deleteProductById} from "../controllers/products-controllers.js";
-import {getAllCarts, getCartById, addCart, deleteCartById, addProductToCart} from "../controllers/carts-controllers.js";
+import {getAllCarts, getCartById, addCart, deleteCartById, addProductToCart, deleteProductFromCart} from "../controllers/carts-controllers.js";
 
 const apiRouter = express.Router();
 
@@ -18,5 +18,6 @@ apiRouter.get("/carts/:cartid", getCartById);
 apiRouter.post("/carts", addCart);
 apiRouter.delete("/carts/:cartid", deleteCartById);
 apiRouter.post("/carts/:cartid/product/:prodid", addProductToCart);
+apiRouter.delete("/carts/:cartid/product/:prodid", deleteProductFromCart);
 
 export default apiRouter;
